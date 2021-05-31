@@ -29,6 +29,14 @@ namespace ProjetoEscola
 
             //registra o meu repositorio como servico
             services.AddTransient<IAlunoRepository,AlunoRepository>();
+
+            //registra o meu repositorio como servico
+            services.AddTransient<ICursoRepository, CursoRepository>();
+
+            //registra o meu repositorio como servico
+            services.AddTransient<IDisciplinaRepository, DisciplinaRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

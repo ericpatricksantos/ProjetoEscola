@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace ProjetoEscola.Repositories.Implementations
 {
-    public class AlunoRepository : IAlunoRepository
+    public class CursoRepository : ICursoRepository
     {
         private IConfiguration _configuration;
 
-        //Injentando dependencias
-        public AlunoRepository(IConfiguration config)
+        public CursoRepository(IConfiguration config)
         {
             _configuration = config;
         }
@@ -24,53 +23,53 @@ namespace ProjetoEscola.Repositories.Implementations
         {
             using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = @"delete from escola.aluno where id = @id";
+                string query = @"delete from escola.curso where id = @id";
 
-               var result = await conn.ExecuteAsync(sql: query, param: new { id });
+                var result = await conn.ExecuteAsync(sql: query, param: new { id });
                 return result;
             }
         }
 
-        public async Task<Aluno> GetAlunoByIdAsync(int? id)
+        public async Task<Curso> GetCursoByIdAsync(int? id)
         {
             using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = @"select * from escola.aluno where id = @id";
+                string query = @"select * from escola.curso where id = @id";
 
-                Aluno a = await conn.QueryFirstOrDefaultAsync<Aluno>(sql: query, param: new { id });
-                return a;
+                Curso c = await conn.QueryFirstOrDefaultAsync<Curso>(sql: query, param: new { id });
+                return c;
             }
         }
 
-        public async Task<List<Aluno>> GetAlunosAsync()
+        public async Task<List<Curso>> GetCursosAsync()
         {
             using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = @"select * from escola.aluno";
+                string query = @"select * from escola.curso";
 
-                List<Aluno> a = (await conn.QueryAsync<Aluno>(sql: query)).ToList();
-                return a;
+                List<Curso> c = (await conn.QueryAsync<Curso>(sql: query)).ToList();
+                return c;
             }
         }
 
-        public async Task<int> SaveAsync(Aluno novoAluno)
+        public async Task<int> SaveAsync(Curso novoCurso)
         {
             using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = @"insert into escola.aluno(id,nome) values(@id, @nome)";
+                string query = @"insert into escola.curso(id,nome) values(@id, @nome)";
 
-                var result = await conn.ExecuteAsync(sql: query, param: novoAluno);
+                var result = await conn.ExecuteAsync(sql: query, param: novoCurso);
                 return result;
             }
         }
 
-        public async Task<int> UpdateAlunoAsync(Aluno atualizaAluno)
+        public async Task<int> UpdateCursoAsync(Curso atualizaCurso)
         {
             using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = @"update escola.aluno set id = @id , nome=@nome where id = @id";
+                string query = @"update escola.curso set id = @id , nome=@nome where id = @id";
 
-                var result = await conn.ExecuteAsync(sql: query, param: atualizaAluno);
+                var result = await conn.ExecuteAsync(sql: query, param: atualizaCurso);
                 return result;
             }
         }

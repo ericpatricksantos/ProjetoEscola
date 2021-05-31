@@ -10,82 +10,83 @@ using System.Threading.Tasks;
 
 namespace ProjetoEscola.Controllers
 {
-    public class AlunoController : Controller
+    public class DisciplinaController : Controller
     {
-        private readonly IAlunoRepository _alunoRepository;
 
-        public AlunoController(IAlunoRepository alunorepo)
+        private readonly IDisciplinaRepository _discRepository;
+
+        public DisciplinaController(IDisciplinaRepository discrepo)
         {
-            _alunoRepository = alunorepo;
+            _discRepository = discrepo;
         }
 
-        // GET: AlunoController
+        // GET: DisciplinaController
         public async Task<IActionResult> Index()
         {
-            return View(await  _alunoRepository.GetAlunosAsync());
+            return View(await _discRepository.GetDisciplinasAsync());
         }
 
-        // GET: AlunoController/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: DisciplinaController/Details/5
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var aluno = await _alunoRepository
-                .GetAlunoByIdAsync(id);
-            if (aluno == null)
+            var d = await _discRepository
+                .GetDisciplinaByIdAsync(id);
+            if (d == null)
             {
                 return NotFound();
             }
 
-            return View(aluno);
+            return View(d);
         }
 
-        // GET: AlunoController/Create
+        // GET: DisciplinaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AlunoController/Create
+        // POST: DisciplinaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome")] Aluno aluno)
+        public async Task<IActionResult> Create([Bind("id,nome")] Disciplina d)
         {
             if (ModelState.IsValid)
             {
-                await _alunoRepository.SaveAsync(aluno);
-               
+                await _discRepository.SaveAsync(d);
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(aluno);
+            return View(d);
         }
 
-        // GET: AlunoController/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: DisciplinaController/Edit/5
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var aluno = await _alunoRepository.GetAlunoByIdAsync(id);
-              
-            if (aluno == null)
+            var d = await _discRepository.GetDisciplinaByIdAsync(id);
+
+            if (d == null)
             {
                 return NotFound();
             }
-            return View(aluno);
+            return View(d);
         }
 
-        // POST: AlunoController/Edit/5
+        // POST: DisciplinaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditConfirmed(int id, [Bind("id,nome")] Aluno aluno)
+        public async Task<IActionResult> EditConfirmed(int id, [Bind("id,nome")] Disciplina d)
         {
-            if (id != aluno.id)
+            if (id != d.id)
             {
                 return NotFound();
             }
@@ -94,21 +95,21 @@ namespace ProjetoEscola.Controllers
             {
                 try
                 {
-                    await _alunoRepository.UpdateAlunoAsync(aluno);
-                   
+                    await _discRepository.UpdateDisciplinaAsync(d);
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    
-                        throw;
-                    
+
+                    throw;
+
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(aluno);
+            return View(d);
         }
 
-        // GET: AlunoController/Delete/5
+        // GET: DisciplinaController/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -116,23 +117,22 @@ namespace ProjetoEscola.Controllers
                 return NotFound();
             }
 
-            var aluno = await _alunoRepository.GetAlunoByIdAsync(id);
-                
-            if (aluno == null)
+            var d = await _discRepository.GetDisciplinaByIdAsync(id);
+
+            if (d == null)
             {
                 return NotFound();
             }
 
-            return View(aluno);
+            return View(d);
         }
 
-        // POST: AlunoController/Delete/5
+        // POST: DisciplinaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-
-            await _alunoRepository.DeleteAsync(id);
+            await _discRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
