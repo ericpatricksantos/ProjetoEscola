@@ -36,6 +36,9 @@ namespace ProjetoEscola
             //registra o meu repositorio como servico
             services.AddTransient<IDisciplinaRepository, DisciplinaRepository>();
 
+            //registra o meu repositorio como servico
+            services.AddTransient<IMatriculaRepository, MatriculaRepository>();
+
 
         }
 
