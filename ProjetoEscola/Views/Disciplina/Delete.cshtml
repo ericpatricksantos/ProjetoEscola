@@ -1,14 +1,13 @@
 ﻿@model ProjetoEscola.Models.Disciplina
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Deleção de Disciplinas";
 }
 
-<h1>Delete</h1>
+<h1>Deleção de Disciplinas</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Disciplina</h4>
+   
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -22,6 +21,6 @@
     <form asp-action="DeleteConfirmed">
         <input type="hidden" asp-for="id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Voltar</a>
     </form>
 </div>

@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<ProjetoEscola.Models.Matricula>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Listagem de Matrículas";
 }
 
-<h1>Index</h1>
+<h1>Listagem de Matrículas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Cadastro de Matrícula</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ano)
+                Ano da Matrícula
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.semestre)
+                Semestre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.aluno_id)
+               Código do Aluno
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.curso_id)
+               Código do Curso
             </th>
             <th></th>
         </tr>
@@ -44,8 +44,8 @@
                     @Html.DisplayFor(modelItem => item.curso_id)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.id">Edição</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
                     <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
                 </td>
             </tr>

@@ -1,13 +1,13 @@
 ﻿@model ProjetoEscola.Models.Disciplina
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes das Disciplinas";
 }
 
-<h1>Details</h1>
+<h1>Detalhes de Disciplinas</h1>
 
 <div>
-    <h4>Disciplina</h4>
+   
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -19,6 +19,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
 </div>
