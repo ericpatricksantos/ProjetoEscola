@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Cadastro de Matrículas";
+
 }
 
 <h1>Cadastro de Matrículas</h1>
@@ -12,6 +13,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="ano" class="control-label">Ano da Matrícula</label>
                 <input asp-for="ano" class="form-control" />
@@ -22,16 +24,22 @@
                 <input asp-for="semestre" class="form-control" />
                 <span asp-validation-for="semestre" class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
                 <label asp-for="aluno_id" class="control-label">Código do Aluno</label>
-                <input asp-for="aluno_id" class="form-control" />
+                @Html.DropDownList("aluno_id", new SelectList(ViewBag.listaAluno, "id", "nome"),"Selecione", new { @class = "form-control" })
+                <i class="form-group-bar"></i>
                 <span asp-validation-for="aluno_id" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="curso_id" class="control-label">Código do Curso</label>
-                <input asp-for="curso_id" class="form-control" />
+                @Html.DropDownList("curso_id", new SelectList(ViewBag.listaCurso, "id", "nome"), "Selecione",new { @class = "form-control" })
+                <i class="form-group-bar"></i>
                 <span asp-validation-for="curso_id" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>

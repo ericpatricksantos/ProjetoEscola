@@ -14,6 +14,11 @@
     <PackageReference Include="MySql.Data" Version="8.0.25" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\View\" />
+    <Folder Include="Models\View\" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

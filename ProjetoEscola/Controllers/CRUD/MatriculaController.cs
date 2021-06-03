@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetoEscola.Models;
+using ProjetoEscola.Repositories.Consultas;
 using ProjetoEscola.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace ProjetoEscola.Controllers
     public class MatriculaController : Controller
     {
         private readonly IMatriculaRepository _matRepository;
+        private Consultas consultas = new Consultas();
 
         public MatriculaController(IMatriculaRepository matrepo)
         {
@@ -47,6 +49,10 @@ namespace ProjetoEscola.Controllers
         // GET: MatriculaController/Create
         public ActionResult Create()
         {
+           //valor temporario para preencher os valores do dropdown
+            ViewBag.listaAluno = consultas.RetornaListaAlunos();
+            ViewBag.listaCurso = consultas.RetornaListaCursos();
+
             return View();
         }
 
