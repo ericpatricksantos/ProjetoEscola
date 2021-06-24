@@ -28,11 +28,7 @@ namespace ProjetoEscola.Repositories.Consultas
         {
             using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = escola; Uid = root; Pwd = mysql"))
             {
-
-
                 string query = "select * from aluno";
-
-
 
                 conn.Open();
 
@@ -40,12 +36,7 @@ namespace ProjetoEscola.Repositories.Consultas
 
                 return alunos;
 
-
-
                 conn.Close();
-
-
-
             }
         }
 

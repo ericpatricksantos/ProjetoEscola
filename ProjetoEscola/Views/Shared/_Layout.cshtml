@@ -24,18 +24,46 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Aluno" asp-action="Index">Aluno</a>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown">
+                                    Cadastros
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Aluno", "Index", "Aluno", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Curso", "Index", "Curso", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Disciplina", "Index", "Disciplina", null, new { target = "_self" })</li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Index">Curso</a>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown">
+                                    Relações
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Matricula", "Index", "", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("CursoDisciplina", "Index", "", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("AlunoDisciplina", "Index", "", null, new { target = "_self" })</li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Disciplina" asp-action="Index">Disciplina</a>
+
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown">
+                                    Relatórios
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Relatório 1", "Index", "", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Relatório 2", "Index", "", null, new { target = "_self" })</li>
+                                    <li class="dropdown-item text-center-dark">@Html.ActionLink("Relatório 3", "Index", "", null, new { target = "_self" })</li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Matricula" asp-action="Index">Matricula</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
