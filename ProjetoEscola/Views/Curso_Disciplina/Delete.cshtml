@@ -1,4 +1,4 @@
-﻿@model ProjetoEscola.Models.Curso
+﻿@model ProjetoEscola.Models.Entities.Curso_Disciplina
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,20 +6,22 @@
 
 <h1 class="text-center">@ViewData["Title"]</h1>
 
+
 <div>
     
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.nome)
+            @Html.DisplayNameFor(model => model.data_desativacao)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.nome)
+            @Html.DisplayFor(model => model.data_desativacao)
         </dd>
     </dl>
 
     <form asp-action="DeleteConfirmed">
-        <input type="hidden" asp-for="id" />
+        <input type="hidden" asp-for="curso_id" />
+        <input type="hidden" asp-for="disciplina_id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Voltar</a>
     </form>

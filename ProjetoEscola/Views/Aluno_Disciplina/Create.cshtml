@@ -1,0 +1,62 @@
+﻿@model ProjetoEscola.Models.CRUD.Aluno_Disciplina
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="matricula_id" class="control-label"></label>
+                @Html.DropDownList("matricula_id", new SelectList(ViewBag.listaMatriculas, "id", "id"), "Selecione", new { @class = "form-control" })
+                <i class="form-group-bar"></i>
+                <span asp-validation-for="matricula_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="aluno_id" class="control-label"></label>
+                @Html.DropDownList("aluno_id", new SelectList(ViewBag.listaAlunos, "id", "nome"), "Selecione", new { @class = "form-control" })
+                <i class="form-group-bar"></i>
+                <span asp-validation-for="aluno_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="curso_id" class="control-label"></label>
+                @Html.DropDownList("curso_id", new SelectList(ViewBag.listaCursos, "id", "nome"), "Selecione", new { @class = "form-control" })
+                <i class="form-group-bar"></i>
+                <span asp-validation-for="curso_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="disciplina_id" class="control-label"></label>
+                @Html.DropDownList("disciplina_id", new SelectList(ViewBag.listaDisciplinas, "id", "nome"), "Selecione", new { @class = "form-control" })
+                <i class="form-group-bar"></i>
+                <span asp-validation-for="disciplina_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nota" class="control-label"></label>
+                <input asp-for="nota" class="form-control" />
+                <span asp-validation-for="nota" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="status" /> @Html.DisplayNameFor(model => model.status)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

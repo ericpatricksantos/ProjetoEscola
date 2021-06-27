@@ -1,0 +1,57 @@
+﻿@model ProjetoEscola.Models.CRUD.Aluno_Disciplina
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.matricula_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.matricula_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.aluno_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.aluno_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.curso_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.curso_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.disciplina_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.disciplina_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nota)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nota)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.matricula_id@Model.aluno_id@Model.curso_id@Model.disciplina_id">
+        @Html.ActionLink("Editar", "Edit", new { matricula_id = Model.matricula_id, aluno_id = Model.aluno_id, curso_id = Model.curso_id, disciplina_id = Model.disciplina_id })
+    </a>  |
+    <a asp-action="Index">Voltar</a>
+
+</div>

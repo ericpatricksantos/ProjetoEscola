@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProjetoEscola.Models.Matricula>
 
 @{
-    ViewData["Title"] = "Listagem de Matrículas";
+    ViewData["Title"] = "Matrículas";
 }
 
-<h1>Listagem de Matrículas</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Cadastro de Matrícula</a>
+    <a asp-action="Create">Cadastro</a>
 </p>
 <table class="table">
     <thead>

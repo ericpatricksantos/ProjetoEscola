@@ -56,5 +56,37 @@ namespace ProjetoEscola.Repositories.Consultas
 
             }
         }
+
+        public List<Disciplina> RetornaListaDisciplinas()
+        {
+            using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = escola; Uid = root; Pwd = mysql"))
+            {
+                string query = "select * from disciplina";
+                conn.Open();
+
+                List<Disciplina> d = (conn.Query<Disciplina>(sql: query)).ToList();
+
+                return d;
+
+                conn.Close();
+
+            }
+        }
+
+        public List<Matricula> RetornaListaMatriculas()
+        {
+            using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = escola; Uid = root; Pwd = mysql"))
+            {
+                string query = "select * from matricula";
+                conn.Open();
+
+                List<Matricula> m = (conn.Query<Matricula>(sql: query)).ToList();
+
+                return m;
+
+                conn.Close();
+
+            }
+        }
     }
 }

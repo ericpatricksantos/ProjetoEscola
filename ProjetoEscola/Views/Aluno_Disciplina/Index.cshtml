@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjetoEscola.Models.CRUD.Aluno_Disciplina>
+
+@{
+    ViewData["Title"] = "Alunos por Disciplinas";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Cadastro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.matricula_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aluno_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curso_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.disciplina_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.matricula_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aluno_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.curso_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.disciplina_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota)
+            </td>
+            <td>
+                @(item.status == true ? "Aprovado" : "Reprovado") 
+            </td>
+            <td>
+               
+                <a asp-action="Edit" asp-route-id="@item.matricula_id@item.aluno_id@item.curso_id@item.disciplina_id">
+                    @Html.ActionLink("Editar", "Edit", new { matricula_id = item.matricula_id, aluno_id = item.aluno_id, curso_id = item.curso_id, disciplina_id = item.disciplina_id }) |
+                </a> |
+
+                <a asp-action="Details" asp-route-id="@item.matricula_id@item.aluno_id@item.curso_id@item.disciplina_id">
+                    @Html.ActionLink("Detalhes", "Details", new {  matricula_id = item.matricula_id, aluno_id = item.aluno_id, curso_id = item.curso_id, disciplina_id = item.disciplina_id }) |
+                </a> |
+
+                <a asp-action="Delete" asp-route-id="@item.matricula_id@item.aluno_id@item.curso_id@item.disciplina_id">
+                    @Html.ActionLink("Delete", "Delete", new {  matricula_id = item.matricula_id, aluno_id = item.aluno_id, curso_id = item.curso_id, disciplina_id = item.disciplina_id })
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

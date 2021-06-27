@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProjetoEscola.Models.Entities.Curso_Disciplina>
+
+@{
+    ViewData["Title"] = "Disciplinas dos cursos";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Cadastro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Código do Curso
+            </th>
+            <th>
+               Código da Disciplina
+            </th>
+            <th>
+               Data de Desativação
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.curso_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.disciplina_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_desativacao)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.curso_id@item.disciplina_id@item.id">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.id, curso_id = item.curso_id, disciplina_id = item.disciplina_id })
+                    </a> |
+
+                    <a asp-action="Details" asp-route-id="@item.curso_id@item.disciplina_id@item.id">
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.id, curso_id = item.curso_id, disciplina_id = item.disciplina_id })
+                    </a> |
+
+                    <a asp-action="Delete" asp-route-id="@item.curso_id@item.disciplina_id@item.id">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id, curso_id = item.curso_id, disciplina_id = item.disciplina_id })
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

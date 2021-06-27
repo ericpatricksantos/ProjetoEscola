@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProjetoEscola.Models.Aluno>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Alunos";
 }
 
-<h1>Cadastro de Alunos</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Cadastro de Alunos</a>
+    <a asp-action="Create">Cadastro</a>
 </p>
 <table class="table">
     <thead>
