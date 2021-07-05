@@ -10,13 +10,16 @@ namespace ProjetoEscola.Models.Entities
     {
         public long id { get; set; }
 
+        [Required]
         [Display(Name = "Código do Curso")]
         public long curso_id { get; set; }
 
+        [Required]
         [Display(Name = "Código da Disciplina")]
         public long disciplina_id { get; set; }
 
+       
         [Display(Name = "Data de Desativação")]
-        public DateTime data_desativacao{ get; set; }
+        public DateTime? data_desativacao{ get; set; }
     }
 }

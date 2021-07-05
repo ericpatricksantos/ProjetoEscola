@@ -12,6 +12,8 @@ namespace ProjetoEscola.Models
         [Display(Name = "Código")]
         public long id { get; set; }
 
+        [Required]
+        [RegularExpression(@"[a-zA-Z'-'\s]{1,40}$", ErrorMessage = "Digite somente letras maiusculas e minusculas")]
         [Display(Name = "Nome")]
         public string nome { get; set; }
     }

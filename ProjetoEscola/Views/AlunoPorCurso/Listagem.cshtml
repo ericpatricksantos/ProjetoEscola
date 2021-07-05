@@ -1,0 +1,63 @@
+﻿@model ProjetoEscola.Models.View.AlunoPorCursoView
+@{
+    ViewData["Title"] = "Relatório Alunos Por Curso";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <h1 class="text-center">@ViewData["Title"]</h1>
+
+    @using (Html.BeginForm("Buscar", "AlunoPorCurso", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label asp-for="curso_id" class="control-label">Código do Curso</label>
+            @Html.DropDownList("curso_id", new SelectList(ViewBag.listaCursos, "id", "nome"), "Selecione", new { @class = "form-control" })
+            <i class="form-group-bar"></i>
+            <span asp-validation-for="curso_id" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ano" class="control-label"></label>
+            <input id="ano" name="ano" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="semestre" class="control-label"></label>
+            <input id="semestre" name="semestre" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input id="buscar" name="buscar" type="submit" value="Buscar" class="btn btn-primary" />
+        </div>
+
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Código do Curso</td>
+                <td>Nome</td>
+                <td>Ano</td>
+                <td>Semestre</td>
+            </tr>
+        </thead>
+        @{ 
+
+            foreach(var item in ViewBag.lista)
+            {
+                <tr>
+                    <td>@item.curso_id</td>
+                    <td>@item.nome</td>
+                    <td>@item.ano</td>
+                    <td>@item.semestre</td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>
+</html>
